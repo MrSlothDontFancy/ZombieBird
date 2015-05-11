@@ -1,0 +1,68 @@
+rectangle code
+private Rectangle rect = new Rectangle(0,0,50,25);
+	
+	
+	public void update(float delta) {
+		// TODO Auto-generated method stub
+		Gdx.app.log("GameWorld","update");
+		
+		rect.x++;
+		rect.y++;
+		
+		if(rect.x > 204 && rect.y > 204)
+		{
+			rect.x = 0;
+			rect.y = 0;
+		}
+		
+		
+		
+		
+	
+	}
+	
+	public Rectangle getRect() {
+		// TODO Auto-generated method stub
+		return rect;
+	}
+	
+	Gdx.app.log("GameScreen", "Attached");
+		world     = new GameWorld(); //initialize world
+		renderer  = new GameRenderer(world); // initialize renderer
+	// TODO Auto-generated method stub
+		Gdx.app.log("GameRenderer","render");
+		
+		/*
+		 * 1. We draw a black background. This prevents flickering.
+		 */
+		
+		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
+		/*
+		 *  2. We draw the filled rectangle
+		 */
+		//Tells the shapeRenderer to finish rendering
+		//We MUST DO THIS EVERYTHIME
+		
+		shapeRenderer.end();
+		
+		/*
+		 * 3. We draw the rectangle outline
+		 */
+		
+		//Tells shapeRenderer to draw an outline of the following shapes
+		shapeRenderer.begin(ShapeType.Line);
+		
+		
+		
+		//Chooses RGB Color of 255 blah blah bhal
+		shapeRenderer.setColor(255 / 255.0f , 109/255.0f, 120/255.0f,1);
+		
+		//Draw the rectangle from myWorld(Usoing shapeType.Line)
+		shapeRenderer.rect(myWorld.getRect().x, myWorld.getRect().y,myWorld.getRect().width,myWorld.getRect().height);
+				
+		
+		shapeRenderer.end();
+		
+		
